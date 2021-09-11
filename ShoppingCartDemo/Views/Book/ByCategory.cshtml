@@ -1,0 +1,26 @@
+﻿@model ShoppingCartDemo.ViewModels.BookListVM
+
+
+@{
+    ViewData["Title"] = @ViewBag.SelectedCategory + "Books";
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Book Store</title>
+</head>
+<body>
+    <h1>@Model.SelectedCategoryDescription</h1>
+    <hr />  
+    @foreach (var book in Model.Books)
+    {
+        <h2>@book.Title</h2>
+        <h3>@book.Author</h3>
+        <h3>@book.Isbn</h3>
+        <h3>@book.ReleaseYear</h3>
+        <h3>@book.Price</h3>
+        <hr />
+    }
+</body>
+</html>
