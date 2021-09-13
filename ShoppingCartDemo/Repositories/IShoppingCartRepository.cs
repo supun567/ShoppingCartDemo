@@ -6,7 +6,7 @@ using ShoppingCartDemo.Models;
 
 namespace ShoppingCartDemo.Repositories
 {
-    public interface IMockShoppingCartRepository
+    public interface IShoppingCartRepository
     {
         List<CartItem> GetItemsInCart { get; }
         bool RemoveItem(CartItem item);

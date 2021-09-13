@@ -14,12 +14,14 @@ namespace ShoppingCartDemo.Controllers
         private readonly IBookRepository _bookRepo;
         private readonly ICategoryRepository _categoryRepo;
         private readonly IAuthorRepository _authorRepo;
+        private readonly IShoppingCartRepository _shoppingCartRepository;
 
-        public BookController(IBookRepository bookRepo, ICategoryRepository categoryRepo, IAuthorRepository authorRepo)
+        public BookController(IBookRepository bookRepo, ICategoryRepository categoryRepo, IAuthorRepository authorRepo,IShoppingCartRepository cartRepo)
         {
             _bookRepo = bookRepo;
             _categoryRepo = categoryRepo;
             _authorRepo = authorRepo;
+            _shoppingCartRepository = cartRepo;
         }
 
         public ViewResult List()
@@ -44,5 +46,24 @@ namespace ShoppingCartDemo.Controllers
                      
             return View(bookListVM);
         }
+
+        public RedirectToActionResult BookPurchased(int id)
+        {
+            Book PurchasedBook = _bookRepo.GetBookById(id);
+            int Quantity = 1; //To Do: Get the value from user
+
+            CartItem Item = new CartItem();
+            Item.PurchasedBook = PurchasedBook;
+            Item.Quantity = Quantity;
+
+            var result = _shoppingCartRepository.AddItem(Item);
+
+            return RedirectToAction("List");
+        }
+        
+        //public void BookPurchased(int id)
+        //{
+           
+        //}
     }
 }

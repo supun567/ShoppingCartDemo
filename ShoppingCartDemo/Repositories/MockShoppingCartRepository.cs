@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartDemo.Repositories
 {
-    public class MockShoppingCartRepository : IMockShoppingCartRepository
+    public class MockShoppingCartRepository : IShoppingCartRepository
     {
-        private readonly List<CartItem> _newCart=new();
+        private readonly List<CartItem> _newCart;
+
+        public MockShoppingCartRepository()
+        {
+            if (_newCart == null)
+            {
+                _newCart = new List<CartItem>();
+            }
+        }
 
         public List<CartItem> GetItemsInCart => _newCart;
 

@@ -29,7 +29,7 @@ namespace ShoppingCartDemo
             services.AddScoped<IBookRepository,MockBookRepository>();
             services.AddScoped<ICategoryRepository, MockCategoryRepository>();
             services.AddScoped<IAuthorRepository, MockAuthorRepository>();
-            services.AddScoped<IMockShoppingCartRepository, MockShoppingCartRepository>();
+            services.AddScoped<IShoppingCartRepository, MockShoppingCartRepository>();
             services.AddControllersWithViews();
         }
 

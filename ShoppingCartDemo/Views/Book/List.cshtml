@@ -23,8 +23,16 @@
                             <p class="card-text">@book.Author</p>
                             <p class="card-text font-weight-bold">CAD$ @book.Price</p>
                             <div class="align-content-center align-items-center">
-                                <a asp-route-id="@book.Id" asp-action="" asp-controller="" class="btn btn-primary">Buy It</a>
                                 <a asp-route-id="@book.Id" asp-action="" asp-controller="" class="btn btn-primary">More Details</a>
+                                @*<input type="submit" class="btn btn-primary" value="Buy It!" />*@
+                                <a asp-route-id="@book.Id" asp-action="BookPurchased" asp-controller="book" class="btn btn-primary">Buy It</a>
+                                @*<select class="form-select btn btn-outline-primary" aria-label="Default select example">
+                                    <option selected value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                    <option value="4">04</option>
+                                    <option value="5">05</option>
+                                </select>*@
                             </div>
                         </div>
                     </div>
