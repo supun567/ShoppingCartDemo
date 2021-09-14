@@ -47,23 +47,18 @@ namespace ShoppingCartDemo.Controllers
             return View(bookListVM);
         }
 
-        public RedirectToActionResult BookPurchased(int id)
+        public void BookPurchased(int id)
         {
             Book PurchasedBook = _bookRepo.GetBookById(id);
-            int Quantity = 1; //To Do: Get the value from user
+            int Quantity = 1; //TODO: Get the value from user
 
             CartItem Item = new CartItem();
             Item.PurchasedBook = PurchasedBook;
             Item.Quantity = Quantity;
 
             var result = _shoppingCartRepository.AddItem(Item);
+            return;
 
-            return RedirectToAction("List");
         }
-        
-        //public void BookPurchased(int id)
-        //{
-           
-        //}
     }
 }
